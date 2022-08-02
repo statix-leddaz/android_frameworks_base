@@ -3204,6 +3204,7 @@
   <!-- ===============================================================
     Resources added in version S-V2 of the platform
     =============================================================== -->
+
   <eat-comment />
 
   <staging-public-group-final type="attr" first-id="0x01ff0000">
@@ -3373,6 +3374,12 @@
   <public type="string" name="config_systemSettingsIntelligence" id="0x01040042" />
     <!-- @hide -->
   <public type="string" name="config_systemBluetoothStack" id="0x01040043" />
+
+  <!-- Font APIs -->
+  <public type="string" name="config_bodyFontFamily" id="0x01040044" />
+  <public type="string" name="config_bodyFontFamilyMedium" id="0x01040045" />
+  <public type="string" name="config_headlineFontFamily" id="0x01040046" />
+  <public type="string" name="config_headlineFontFamilyMedium" id="0x01040047" />
 
   <staging-public-group-final type="array" first-id="0x01d90000">
     <!-- @hide @SystemApi -->
