@@ -70,7 +70,7 @@ public class PropImitationHooks {
         "PIXEL_2022_MIDYEAR_EXPERIENCE"
     };
 
-    private static final String PACKAGE_VELVET = "com.google.android.quicksearchbox";
+    private static final String PACKAGE_VELVET = "com.google.android.googlequicksearchbox";
     private static final String PACKAGE_TURBO = "com.google.android.apps.turbo";
     private static final String PACKAGE_GBOARD = "com.google.android.inputmethod.latin";
     private static final String PACKAGE_WALLPAPERS = "com.google.android.apps.wallpaper";
