@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2022 Paranoid Android
+ * Copyright (C) 2022 StatiXOS
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -66,15 +67,17 @@ public class PropImitationHooks {
     };
 
     private static final String PACKAGE_VELVET = "com.google.android.quicksearchbox";
+    private static final String PACKAGE_TURBO = "com.google.android.apps.turbo";
+    private static final String PACKAGE_GBOARD = "com.google.android.inputmethod.latin";
     private static final String PACKAGE_WALLPAPERS = "com.google.android.apps.wallpaper";
-    private static final Map<String, Object> sP6Props = new HashMap<>();
+    private static final Map<String, Object> sP7Props = new HashMap<>();
     static {
-        sP6Props.put("BRAND", "google");
-        sP6Props.put("MANUFACTURER", "Google");
-        sP6Props.put("DEVICE", "raven");
-        sP6Props.put("PRODUCT", "raven");
-        sP6Props.put("MODEL", "Pixel 6 Pro");
-        sP6Props.put("FINGERPRINT", "google/raven/raven:13/TP1A.220624.021/8877034:user/release-keys");
+        sP7Props.put("BRAND", "google");
+        sP7Props.put("MANUFACTURER", "Google");
+        sP7Props.put("DEVICE", "cheetah");
+        sP7Props.put("PRODUCT", "cheetah");
+        sP7Props.put("MODEL", "Pixel 7 Pro");
+        sP7Props.put("FINGERPRINT", "google/cheetah/cheetah:13/TD1A.221105.001/9104446:user/release-keys");
     }
 
     private static final boolean sSpoofGapps =
@@ -107,9 +110,10 @@ public class PropImitationHooks {
             dlog("Spoofing Pixel XL for Google Photos");
             sP1Props.forEach((k, v) -> setPropValue(k, v));
         } else if (sSpoofGapps && (packageName.equals(PACKAGE_VELVET)
+                || packageName.equals(PACKAGE_TURBO) || packageName.equals(PACKAGE_GBOARD)
                 || packageName.equals(PACKAGE_WALLPAPERS))) {
-            dlog("Spoofing Pixel 6 Pro for: " + packageName);
-            sP6Props.forEach((k, v) -> setPropValue(k, v));
+            dlog("Spoofing Pixel 7 Pro for: " + packageName);
+            sP7Props.forEach((k, v) -> setPropValue(k, v));
         }
     }
 
