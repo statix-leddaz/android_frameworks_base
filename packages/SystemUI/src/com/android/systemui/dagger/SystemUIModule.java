@@ -19,8 +19,8 @@ package com.android.systemui.dagger;
 import android.app.AlarmManager;
 import android.app.INotificationManager;
 import android.content.Context;
-import android.service.dreams.IDreamManager;
 import android.os.Handler;
+import android.service.dreams.IDreamManager;
 
 import androidx.annotation.Nullable;
 
@@ -72,6 +72,7 @@ import com.android.systemui.screenshot.dagger.ScreenshotModule;
 import com.android.systemui.security.data.repository.SecurityRepositoryModule;
 import com.android.systemui.settings.DisplayTracker;
 import com.android.systemui.settings.dagger.MultiUserUtilsModule;
+import com.android.systemui.settings.UserTracker;
 import com.android.systemui.shade.ShadeController;
 import com.android.systemui.shade.transition.LargeScreenShadeInterpolator;
 import com.android.systemui.shade.transition.LargeScreenShadeInterpolatorImpl;
@@ -97,8 +98,8 @@ import com.android.systemui.statusbar.phone.dagger.CentralSurfacesComponent;
 import com.android.systemui.statusbar.pipeline.dagger.StatusBarPipelineModule;
 import com.android.systemui.statusbar.policy.HeadsUpManager;
 import com.android.systemui.statusbar.policy.KeyguardStateController;
-import com.android.systemui.statusbar.policy.PolicyModule;
 import com.android.systemui.statusbar.policy.NextAlarmController;
+import com.android.systemui.statusbar.policy.PolicyModule;
 import com.android.systemui.statusbar.policy.ZenModeController;
 import com.android.systemui.statusbar.policy.dagger.SmartRepliesInflationModule;
 import com.android.systemui.statusbar.policy.dagger.StatusBarPolicyModule;
@@ -119,8 +120,8 @@ import com.android.systemui.util.time.SystemClock;
 import com.android.systemui.util.time.SystemClockImpl;
 import com.android.systemui.wallet.dagger.WalletModule;
 import com.android.systemui.wmshell.BubblesManager;
+import com.android.systemui.R;
 import com.android.wm.shell.bubbles.Bubbles;
-
 import com.google.android.systemui.smartspace.BcSmartspaceDataProvider;
 import com.google.android.systemui.smartspace.KeyguardMediaViewController;
 import com.google.android.systemui.smartspace.KeyguardSmartspaceController;
@@ -323,7 +324,7 @@ public abstract class SystemUIModule {
     @Binds
     abstract LargeScreenShadeInterpolator largeScreensShadeInterpolator(
             LargeScreenShadeInterpolatorImpl impl);
-    
+
     @Provides
     @SysUISingleton
     static KeyguardSmartspaceController provideKeyguardSmartspaceController(FeatureFlags featureFlags,
@@ -341,8 +342,8 @@ public abstract class SystemUIModule {
     @Provides
     @SysUISingleton
     static KeyguardMediaViewController provideKeyguardMediaViewController(Context context, BcSmartspaceDataPlugin bcSmartspaceDataPlugin,
-            @Main DelayableExecutor delayableExecutor, NotificationMediaManager notificationMediaManager, BroadcastDispatcher broadcastDispatcher) {
-        return new KeyguardMediaViewController(context, bcSmartspaceDataPlugin, delayableExecutor, notificationMediaManager, broadcastDispatcher);
+            @Main DelayableExecutor delayableExecutor, NotificationMediaManager notificationMediaManager, BroadcastDispatcher broadcastDispatcher, UserTracker userTracker) {
+        return new KeyguardMediaViewController(context, bcSmartspaceDataPlugin, delayableExecutor, notificationMediaManager, broadcastDispatcher, userTracker);
     }
 
     @Provides
