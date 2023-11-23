@@ -75,7 +75,7 @@ public class PropImitationHooks {
         sIsFinsky = packageName.equals(PACKAGE_FINSKY);
 
         if (sIsGms) {
-            dlog("Setting Pixel XL fingerprint for: " + packageName);
+            dlog("Setting Nexus 5X fingerprint for: " + packageName);
             spoofBuildGms();
         } else if (!sCertifiedFp.isEmpty() && sIsFinsky) {
             dlog("Setting certified fingerprint for: " + packageName);
@@ -104,12 +104,12 @@ public class PropImitationHooks {
 
     private static void spoofBuildGms() {
         // Alter model name and fingerprint to avoid hardware attestation enforcement
-        setPropValue("FINGERPRINT", "asus/WW_Phone/ASUS_X00HD_4:7.1.1/NMF26F/14.2016.1801.372-20180119:user/release-keys");
-        setPropValue("PRODUCT", "WW_Phone");
-        setPropValue("DEVICE", "ASUS_X00HD_4");
-        setPropValue("MANUFACTURER", "Asus");
-        setPropValue("BRAND", "Asus");
-        setPropValue("MODEL", "ASUS_X00HD");
+        setPropValue("FINGERPRINT", "google/bullhead/bullhead:8.0.0/OPR6.170623.013/4283548:user/release-keys");
+        setPropValue("PRODUCT", "bullhead");
+        setPropValue("DEVICE", "bullhead");
+        setPropValue("MANUFACTURER", "LGE");
+        setPropValue("BRAND", "google");
+        setPropValue("MODEL", "Nexus 5X");
     }
 
     private static boolean isCallerSafetyNet() {
