@@ -18,6 +18,7 @@
 package com.android.internal.util;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.res.Resources;
 import android.os.Build;
 import android.util.Log;
@@ -63,9 +64,9 @@ public class PropImitationHooks {
     private static volatile boolean sIsGms = false;
     private static volatile boolean sIsFinsky = false;
 
-    public static void setProps(Application app) {
-        final String packageName = app.getPackageName();
-        final String processName = app.getProcessName();
+    public static void setProps(Context context) {
+        final String packageName = context.getPackageName();
+        final String processName = Application.getProcessName();
 
         if (packageName == null || processName == null) {
             return;
@@ -84,7 +85,8 @@ public class PropImitationHooks {
             dlog("Setting stock fingerprint for: " + packageName);
             setPropValue("FINGERPRINT", sStockFp);
         } else if (packageName.equals(PACKAGE_SUBSCRIPTION_RED) || packageName.equals(PACKAGE_TURBO)
-                   || packageName.equals(PACKAGE_VELVET) || packageName.equals(PACKAGE_GBOARD) || packageName.equals(PACKAGE_SETUPWIZARD) || packageName.equals(PACKAGE_GMS)) {
+                   || packageName.equals(PACKAGE_VELVET) || packageName.equals(PACKAGE_GBOARD)
+                   || packageName.equals(PACKAGE_SETUPWIZARD) || packageName.equals(PACKAGE_GMS)) {
             dlog("Spoofing Pixel 8 Pro for: " + packageName);
             sP8Props.forEach((k, v) -> setPropValue(k, v));
         }
